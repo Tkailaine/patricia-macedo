@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <style>
+      /* Estilo global */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding-top: 80px;
+}
+
+/* Menu com fundo transparente por padrão */
+header.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-image: linear-gradient(45deg, #0f0f0f 35% , rgb(51, 50, 50), #020202 ); /* Gradiente sólido */
+    color: white;
+    z-index: 1000;
+  
+    transition: background-image 0.5s ease; /* Transição suave para o gradiente */
+    background-image: linear-gradient(45deg, #0f0f0f 35% , rgb(51, 50, 50), #020202 ); /* Gradiente sólido */ 
+    background-size: 100% 100%; /* Preenche toda a área do menu com o gradiente */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    color: black;
+  }
+  
+  /* Quando o menu não estiver com fundo transparente */
+  header.navbar.scrolled {
+    background-image: linear-gradient(45deg, #ffffff 30%, #bebebb 100%); 
+    background-size: 100% 100%; /* Preenche toda a área do menu com o gradiente */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    color: black;
+  }
+  
+  /* Cor dos links quando o menu ganhar fundo */
+  header.navbar.scrolled nav.menu ul li a {
+    color: #cc9865; /* Cor quando o menu tem fundo */
+  }
+  
+  header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .logo img {
+    width: 230px;
+  }
+  
+  nav.menu .close-btn {
+    display: block;
+  }
+  
+  nav.menu {
+    display: flex;
+  }
+  
+  nav.menu ul {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+  }
+  
+  nav.menu ul li a {
+    text-decoration: none;
+    color:white ; /* Cor inicial dos links */
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+  
+  nav.menu ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background:  #DAB2A4;
+    transition: width 0.3s ease;
+  }
+  
+  nav.menu ul li a:hover::after {
+    width: 100%;
+  }
+  
+  nav.menu ul li a:hover {
+    color: white;
+  }
+  
+  /* Botão de menu (Hamburger) */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+  }
+  
+  .menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: all 0.3s ease;
+  }
+  
+  /* Efeitos no botão */
+  .menu-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .menu-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  
+  /* Botão de fechar no menu */
+  nav.menu .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    display: none;
+    z-index: 1001;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+    }
+  
+    nav.menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      height: 100vh;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.5s ease;
+    }
+  
+    nav.menu.active {
+      left: 0;
+    }
+  
+    nav.menu ul {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    nav.menu ul li {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeIn 0.5s ease forwards;
+    }
+  
+    nav.menu ul li:nth-child(1) {
+      animation-delay: 0.3s;
+    }
+  
+    nav.menu ul li:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+  
+    nav.menu ul li:nth-child(3) {
+      animation-delay: 0.7s;
+    }
+  
+    nav.menu ul li:nth-child(4) {
+      animation-delay: 0.9s;
+    }
+  
+    /* Mostrar o botão de fechar no menu ativo */
+    nav.menu .close-btn {
+      display: block;
+    }
+  }
+  
+  /* Animação de fade-in */
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .btn-whatsapp{
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    border-radius: 10px;
+    width: 100px;
+    height: 35px;
+    font-family: var(--fonte-destaque);
+    cursor: pointer;
+    display: block;
+    margin: 0px;
+    font-weight: 600;
+
+  }
+
+  .btn-whatsapp:hover{
+    background-color: #DAB2A4;
+    transition-duration: 1s;
+    color: white;
+    border: 2px solid #DAB2A4;
+  }
+  .container {
+            max-width: 1200px;
+            margin: 70px auto;
+        }
+        .blog {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .card-blog {
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .card-blog:hover {
+            transform: scale(1.05);
+        }
+        .card-blog img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .news-content {
+            padding: 15px;
+        }
+        .news-meta {
+            font-size: 12px;
+            color: #777;
+        }
+        .news-title {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .news-summary {
+            font-size: 14px;
+            color: #555;
+        }
+        .news-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #c9907c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .news-link:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .blog {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        a{
+          text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <a href="../index.html">
+        <div class="logo"><img src="../imagens/logo-letra-branco.png" alt="Ronaldo Lima"></div>
+      </a>
+      <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav class="menu" id="menu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../index.html#atuacoes">Áreas de Atuação</a></li>
+          <li style="display: none;"><a href="#escritorio">Escritório</a></li>
+          <li><a href="../#cv-advogado">Sobre</a></li>
+          <li><a href="../blog/blog.html">Informativos</a></li>
+        </ul>
+        <button class="close-btn" id="closeMenu">&times;</button>
+      </nav>
+      <a href="https://wa.link/jmaeoh" target="_blank"><button class="btn-whatsapp">Entre em contato</button></a>
+    </div>
+</header>
+
+<div class="container">
+  <h1 style="text-align:center; margin-bottom:20px;">Todas as Notícias</h1>
+  <div class="blog" id="newsContainer">
+      <!-- Os cards serão adicionados aqui dinamicamente -->
+  </div>
+</div>
+    
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+    console.log("JavaScript carregado com sucesso!");
+
+    const menuToggle = document.getElementById("menuToggle");
+    const menu = document.getElementById("menu");
+    const closeMenu = document.getElementById("closeMenu");
+    const menuLinks = document.querySelectorAll("#menu a");
+
+    if (menuToggle && menu) {
+        menuToggle.addEventListener("click", () => {
+            console.log("Menu aberto");
+            menu.classList.add("active");
+        });
+    } else {
+        console.error("Erro: Elementos do menu não encontrados!");
+    }
+
+    if (closeMenu && menu) {
+        closeMenu.addEventListener("click", () => {
+            console.log("Menu fechado");
+            menu.classList.remove("active");
+        });
+    }
+
+    if (menuLinks.length > 0 && menu) {
+        menuLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                console.log("Menu fechado ao clicar em um link");
+                menu.classList.remove("active");
+            });
+        });
+    }
+
+
+
+
+
+    // Evento de rolagem para verificar visibilidade (caso necessário)
+    if (typeof checkVisibility === "function") {
+        window.addEventListener("scroll", checkVisibility);
+        checkVisibility(); // Executa assim que a página carregar
+    } else {
+        console.warn("Função checkVisibility não encontrada.");
+    }
+
+});
+
+//cards
+const newsData = [
+            { img: "imagens/1.jpg", fonte: "Patricia Macedo", data: "24/03/2025", titulo: "LOAS BPC: 5 condições que podem garantir o benefício", resumo: "O Benefício de Prestação Continuada (BPC LOAS) garante um auxílio mensal de R$ 1.518,00 para pessoas com deficiência e idosos de baixa renda. Algumas condições dão direito ao benefício, como nanismo, amputação de braço, HIV, ansiedade e depressão, além de TDAH e autismo , desde que comprovem impacto na autonomia e na capacidade de trabalho. É essencial apresentar elogios médicos e comprovar a vulnerabilidade social para obter a concessão do benefício.", link: "1.html" },
+            { img: "imagens/2.jpg", fonte: "Patricia Macedo", data: "24/03/2025", titulo: "INSS Negou Seu Benefício? Saiba o Que Fazer!", resumo: "Se seu pedido de aposentadoria, auxílio-doença ou outro benefício foi negado pelo INSS, não desista! Você pode solicitar a decisão. Primeiro, analise o motivo da negativa e reúna toda a documentação necessária. Contar com um advogado previdenciário pode aumentar suas chances de sucesso, seja no recurso administrativo ou judicial. O prazo para solicitar é de 30 dias após a notificação. Lute pelos seus direitos e garanta seu futuro!", link: "2.html" },
+            { img: "imagens/3.jpg", fonte: "Patricia Macedo", data: "24/03/2025", titulo: "Doenças que Isentam Carência no INSS", resumo: "Muitos seguranças se perguntam: “Tenho a doença X, posso me salvar?”. Um dos requisitos para benefícios previdenciários como o auxílio-doença é a carência , ou seja, um número mínimo de contribuições. No entanto, algumas doenças dispensam essa exigência , conforme a Lei 8.213 e a Portaria 22/22 . Entre as doenças que não desativam carência , estão câncer, AIDS, cardiopatia grave, esclerose múltipla, AVC agudo, entre outras . Além disso, os prazos de recebimento do auxílio-doença podem ser contabilizados como tempo de contribuição. Se você ou um cliente está nessa situação, é essencial conferir a lista oficial e buscar orientação especializada para garantir seus direitos!", link: "3.html" }
+        ];
+
+        // Ordena as notícias por data (mais recente primeiro)
+        newsData.sort((a, b) => {
+            const dateA = new Date(a.data.split("/").reverse().join("-"));
+            const dateB = new Date(b.data.split("/").reverse().join("-"));
+            return dateB - dateA;
+        });
+
+        const newsContainer = document.getElementById("newsContainer");
+
+        newsData.forEach(news => {
+            const card = document.createElement("div");
+            card.classList.add("card-blog");
+            card.innerHTML = `
+                <img src="${news.img}" alt="${news.titulo}">
+                <div class="news-content">
+                    <p class="news-meta">Fonte: ${news.fonte} | Data: ${news.data}</p>
+                    <h2 class="news-title">${news.titulo}</h2>
+                    <p class="news-summary">${news.resumo}</p>
+                    <a href="${news.link}" class="news-link">Leia mais</a>
+                </div>
+            `;
+            newsContainer.appendChild(card);
+        });
+  
+    </script>
+</body>
+</html>

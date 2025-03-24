@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+.text-container h2{
+  font-size: 3em;
+}
+
+.text-container p{
+  font-size: 1.5em;
+}
+
+
+.conteudo-especializacoes{
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 0px;
+  padding: 80px 0px;
+  
+}
+
+.direcao{
+  flex-direction:row-reverse ;
+}
+
+.ft-especializacoes{
+  width: 450px;
+  height: 600px;
+  margin-top: 0px;
+}
+
+
+.txt-especializacoes{
+  width: 40%;
+
+}
+
+.cv-advogado{
+  flex-direction: row;
+  width: 90%;
+  margin: auto;
+  gap: 50px;
+  
+}
+
+
+.txt-advogado{
+  width: 90%
+  
+}
+
+
+
+
+.h1-chamada{
+  top: 30%;
+}
+
+.chamada-acao{
+  background-attachment: fixed;
+}
+
+  .form {
+      position: absolute;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      top: 52%;
+      left: 50%;
+      height: 200px;
+      padding: 0px 0px;
+      gap: 0px;
+   
+  }
+
+  .form input,
+.form textarea,
+.form button {
+
+  width: 120px;
+  height: 40px;
+
+
+}
+
+  .h1-form{
+    top: 15%;
+    font-size: 1.5em;
+  }
+  
+
+
+.footer{
+  height: 300px;
+}
+
+.sessao-footer{
+
+  justify-content: start;
+  flex-direction: row;
+  
+}
+
+.links-uteis > li{
+  font-size: 1.3em;
+  margin: 20px 0px;
+}
+
+.sessao-footer > div{
+margin-top: 25px;
+margin-right: 60px;
+}

@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+nav.menu ul {
+  gap: 20px;
+}
+
+
+.text-container h2{
+  font-size: 2.6em;
+}
+
+.text-container p{
+  font-size: 1.3em;
+}
+
+
+
+
+.txt-advogado{
+  width: 80%;
+}
+
+
+  .links-uteis > li{
+    font-size: 1.2em;
+    margin: 20px 0px;
+  }
+  
+  .form {
+  
+    font-size: 1.125rem;
+
+  }
+
+ 
